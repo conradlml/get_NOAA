@@ -6,28 +6,6 @@
 # last update: 2/5/2025
 ################################################################################
 
-### Background information -----------------------------------------------------
-
-# NOAA houses a wealth of historical weather/climate data that is often useful 
-# for IDEQ projects. You can go to NOAA's website to download historical data
-# or you can use this R script. 
-
-# To kick things off, start by going to https://www.ncei.noaa.gov/cdo-web/ then 
-# "Browse Datasets". Click on "Daily Summaries" and "more" followed by "NCEI 
-# HTTPS Server". 
-
-# This website shoulnd't be very fun to look at. There is a "readme.txt" file 
-# that provides information on the different types of datasets and data  housed
-# on this server. 
-
-# This script was developed to identify the physically closest weather station
-# to a certain location that includes data from a defined period of interest. 
-# First we will identify the closest station that meets our needs then extract
-# the daily average temperature and precipitation. With some small adjustments, 
-# this code can be used to download multiple stations of interest. 
-
-
-
 ### User inputs ----------------------------------------------------------------
 
 # Enter your decimal degree latitude
@@ -44,13 +22,18 @@ end_year <- 2024
 
 # Enter your username (the name at the beginning of your computer's file explorer
 # path) in quotations
-my_name <- "lconrad"
+my_name <- "jdoe"
+
+
 
 ################################################################################
 #                                 START
 ################################################################################
 
 ### Load packages and data -----------------------------------------------------
+
+my_packages <- c("lubridate", "glue", "tidyverse", "openxlsx", "data.table")
+install.packages(my_packages, repos = "http://cran.rstudio.com")
 
 library(lubridate)
 library(glue)
@@ -137,7 +120,6 @@ local_weather <- fread(station_daily) %>%
 # downloads folder. Adjust the file path if you'd like it to save somewhere
 # else. 
 write.xlsx(local_weather, paste0("C:/Users/",my_name,"/Downloads/",Sys.Date(),"_","NOAA_daily_data.xlsx"))
-
 
 
 ################################################################################
