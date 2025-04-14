@@ -2,7 +2,7 @@
 ################################################################################
 # Scraping the internet for historical NOAA weather data 
 #
-# Lily Conrad, IDEQ State Office 
+# Lily Conrad 
 # last update: 2/5/2025
 ################################################################################
 
